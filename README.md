@@ -23,7 +23,7 @@ For MongoDB requests use: [http://localhost:8080/mongo/sine](http://localhost:80
 
 |Method|Info|
 |:---|:---|
-|GET |Gets all entries|
+|GET |Gets all entries.|
 |POST |Needs JSON body ``{ x: <int> }``.<br>Inserts one sine value.&ast;|
 |DELETE |Deletes all entries.|
 
