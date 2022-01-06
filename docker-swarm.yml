@@ -1,0 +1,8 @@
+version: '3.5'
+services:
+  sine-wave:
+    image: sine-wave
+    ports:
+      - '8070-8073:8080'
+    deploy:
+      replicas: 4

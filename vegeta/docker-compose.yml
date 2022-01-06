@@ -1,0 +1,5 @@
+version: "3.5"
+services:
+  vegeta-alpine:
+    container_name: vegeta
+    build: .
