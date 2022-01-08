@@ -9,4 +9,3 @@ build
 vegeta/*
 !vegeta/docker-compose.yml
 !vegeta/Dockerfile
-monitoring/grafana/grafana-dashboards/Ktor-monitoring-old.json
