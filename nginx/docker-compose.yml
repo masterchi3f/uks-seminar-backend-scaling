@@ -1,8 +1,10 @@
 version: '3.5'
 services:
   nginx:
+    image: nginx
     container_name: nginx
     restart: unless-stopped
-    build: .
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
     ports:
       - '8080:80'
