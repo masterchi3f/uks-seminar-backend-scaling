@@ -12,11 +12,7 @@ services:
       - prometheus-data:/prometheus
     networks:
       - monitoring
-    extra_hosts:
-      # requires Docker Engine >= 20.04 -> needed to access host to gather node metrics from exporters
-      - "host.docker.internal:host-gateway"
     depends_on:
-      - docker-volume-exporter
       - cadvisor
 
   grafana:
@@ -46,17 +42,6 @@ services:
       - /var/run:/var/run:rw
       - /sys:/sys:ro
       - /var/lib/docker/:/var/lib/docker:ro
-    networks:
-      - monitoring
-
-  docker-volume-exporter:
-    container_name: docker-volume-exporter
-    restart: unless-stopped
-    build: ./docker-volume-exporter
-    ports:
-      - '2112:2112'
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
     networks:
       - monitoring
 
