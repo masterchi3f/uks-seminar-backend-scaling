@@ -17,11 +17,4 @@ cd vegeta && docker-compose up -d && cd ..
 ### Monitoring with Prometheus, Grafana, cAdvisor and windows_exporter
 cd monitoring && docker-compose up -d && cd ..
 
-### To remove swarm service:
-# docker service rm $(docker service ls -q)
-### To leave swarm mode:
-# docker swarm leave --force
-### To stop all container
-# docker kill $(docker ps -q)
-
 sleep 5

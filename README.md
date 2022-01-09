@@ -75,3 +75,9 @@ Follow the instructions in the ``change.sh`` and then run it.
 
 The Ktor backends may take a little time to calm down and start running,
 so it is no coincidence when the CPU is first a little higher in the cAdvisor dashboard.
+
+### Stop and prune everything that is running
+
+Run the ``kill.sh`` file.
+
+For stopping Docker swarm mode see the details in ``kill.sh``.
