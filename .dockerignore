@@ -15,6 +15,7 @@ postgres-init.sql
 vegeta
 init.sh
 change.sh
+kill.sh
 nginx
 README.md
 monitoring
