@@ -1,5 +1,13 @@
 # Horizontal scaling of a backend service
 
+### Prerequisites
+
+1. In [nginx.conf](./nginx/nginx.conf) change the IPs of the servers to your own IPs
+(on single node scaling ```docker.host.internal``` will also work).
+2. In [Dockerfile](Dockerfile) set the Xmx (maximum RAM) and Xms (minimum, initial RAM) values you want to use the server with.
+
+### Start scaling
+
 Run the ``init.sh`` file.
 
 It starts docker containers for a PostgreSQL and MongoDB.<br>
@@ -26,7 +34,7 @@ For MongoDB requests use: [http://localhost:8080/mongo/sine](http://localhost:80
 |Method|Info|
 |:---|:---|
 |GET |Gets all entries.|
-|POST |Needs JSON body ``{ x: <int> }``.<br>Inserts one sine value.&ast;|
+|POST |Needs JSON body ``{ x: <float> }``.<br>Inserts one sine value.&ast;|
 |DELETE |Deletes all entries.|
 
 &ast;PostgreSQL uses the x value as primary key (can't insert two sine values with same x value).
