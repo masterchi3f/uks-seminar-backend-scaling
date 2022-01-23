@@ -45,8 +45,10 @@ Run ``docker exec -it vegeta /bin/sh`` to start the vegeta console.
 
 __Example__ to send 249 successful and one error request (Error is with body ``{ x: null }``). This inserts 249 sine pairs in the MongoDB:
 
+__IMPORTANT__ Set your Nginx IP for $IP$!
+
 ```bash
-jq -ncM 'while(true; .+1) | {method: "POST", url: "http://host.docker.internal:8080/mongo/sine", body: {x: .} | @base64, header: {"Content-Type": ["application/json"]}}' | \
+jq -ncM 'while(true; .+1) | {method: "POST", url: "http://$IP$:8080/mongo/sine", body: {x: .} | @base64, header: {"Content-Type": ["application/json"]}}' | \
   vegeta attack -rate=50/s -lazy -format=json -duration=5s | \
   tee results.bin | \
   vegeta report
