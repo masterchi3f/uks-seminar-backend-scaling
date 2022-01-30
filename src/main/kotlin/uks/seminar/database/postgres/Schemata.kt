@@ -5,7 +5,8 @@ import org.jetbrains.exposed.sql.Table
 import uks.seminar.models.Coordinate
 
 object CoordinateTable : Table("coordinate") {
-    val x = float("x").primaryKey()
+    val id = integer("id").autoIncrement().primaryKey()
+    val x = float("x")
     val y = float("y")
 }
 

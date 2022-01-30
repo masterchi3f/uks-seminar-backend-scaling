@@ -2,7 +2,6 @@
 docker-compose up -d
 
 ### Scaled backend service sine-wave
-docker build . -t sine-wave:latest
 docker swarm init
 docker stack deploy -c docker-swarm.yml swarm
 

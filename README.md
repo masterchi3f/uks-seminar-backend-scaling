@@ -2,11 +2,12 @@
 
 ### Prerequisites
 
-1. In [nginx.conf](./nginx/nginx.conf) change the IPs of the servers to your own IPs
+1. Run ``docker build . -t sine-wave:latest`` in the root to build the backend image.
+2. In [nginx.conf](./nginx/nginx.conf) change the IPs of the servers to your own IPs
    (on single node scaling ```docker.host.internal``` will also work).
-2. In [prometheus-config.yml](./monitoring/prometheus-config.yml) change the IPs of the Micrometer exporter (where the server instances are running) to your own IPs
+3. In [prometheus-config.yml](./monitoring/prometheus-config.yml) change the IPs of the Micrometer exporter (where the server instances are running) to your own IPs
    (on single node scaling ```docker.host.internal``` will also work).
-3. In [Dockerfile](Dockerfile) set the Xmx (maximum RAM) and Xms (minimum, initial RAM) values you want to use the server with.
+4. In [Dockerfile](Dockerfile) set the Xmx (maximum RAM) and Xms (minimum, initial RAM) values you want to use the server with.
 
 ### Start scaling
 
@@ -38,8 +39,6 @@ For MongoDB requests use: [http://localhost:8080/mongo/sine](http://localhost:80
 |GET |Gets all entries.|
 |POST |Needs JSON body ``{ x: <float> }``.<br>Inserts one sine value.&ast;|
 |DELETE |Deletes all entries.|
-
-&ast;PostgreSQL uses the x value as primary key (can't insert two sine values with same x value).
 
 ### Execute a Vegeta command
 
