@@ -5,8 +5,9 @@ import io.ktor.response.*
 import io.ktor.routing.*
 import uks.seminar.api.MongoEndpoint.mongoEndpoint
 import uks.seminar.api.PostgresEndpoint.postgresEndpoint
+import uks.seminar.database.postgres.PostgresDatabase
 
-fun Application.configureRouting(hostname: String) {
+fun Application.configureRouting(hostname: String, postgresDatabase: PostgresDatabase) {
     routing {
         route("/") {
             get {
@@ -14,6 +15,6 @@ fun Application.configureRouting(hostname: String) {
             }
         }
         mongoEndpoint()
-        postgresEndpoint()
+        postgresEndpoint(postgresDatabase)
     }
 }

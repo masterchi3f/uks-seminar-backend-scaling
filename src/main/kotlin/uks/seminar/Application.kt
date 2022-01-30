@@ -16,10 +16,10 @@ fun Application.module() {
     val hostname: String = environment.config
         .propertyOrNull("ktor.deployment.hostname")
         ?.getString() ?: throw IllegalArgumentException("hostname is null!")
-    configureRouting(hostname)
+    val postgresDatabase = PostgresDatabase(dbHost).createTables()
+    MongoDatabase.connectDb(dbHost)
+    configureRouting(hostname, postgresDatabase)
     configureHTTP()
     configureAdministration()
     configureMetrics()
-    PostgresDatabase.connectDb(dbHost)
-    MongoDatabase.connectDb(dbHost)
 }

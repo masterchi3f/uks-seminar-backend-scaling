@@ -1,18 +1,19 @@
 package uks.seminar.database.postgres
 
+import kotlinx.coroutines.Deferred
 import org.jetbrains.exposed.sql.deleteAll
 import org.jetbrains.exposed.sql.insert
 import org.jetbrains.exposed.sql.selectAll
 import uks.seminar.models.Coordinate
 
-object PostgresSineDao {
+class PostgresSineDao(private val postgresDatabase: PostgresDatabase) {
 
-    suspend fun getAllCoordinates(): List<Coordinate> = PostgresDatabase.query {
+    suspend fun getAllCoordinatesAsync(): Deferred<List<Coordinate>> = postgresDatabase.queryAsync {
         CoordinateTable.selectAll().mapNotNull { toCoordinate(it) }
     }
 
-    suspend fun insertCoordinate(c: Coordinate) {
-        PostgresDatabase.query {
+    suspend fun insertCoordinateAsync(c: Coordinate) {
+        postgresDatabase.queryAsync {
             CoordinateTable.insert {
                 it[x] = c.x
                 it[y] = c.y
@@ -20,8 +21,8 @@ object PostgresSineDao {
         }
     }
 
-    suspend fun deleteAll() {
-        PostgresDatabase.query {
+    suspend fun deleteAllAsync() {
+        postgresDatabase.queryAsync {
             CoordinateTable.deleteAll()
         }
     }

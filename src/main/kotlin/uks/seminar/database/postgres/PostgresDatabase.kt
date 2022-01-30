@@ -1,27 +1,30 @@
 package uks.seminar.database.postgres
 
+import kotlinx.coroutines.Deferred
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.withContext
 import org.jetbrains.exposed.sql.Database
 import org.jetbrains.exposed.sql.SchemaUtils.create
+import org.jetbrains.exposed.sql.transactions.experimental.suspendedTransactionAsync
 import org.jetbrains.exposed.sql.transactions.transaction
 
-object PostgresDatabase {
+class PostgresDatabase(private val host: String) {
 
-    fun connectDb(host: String) {
-        Database.connect(
-            "jdbc:postgresql://$host:5432/sine",
-            driver = "org.postgresql.Driver",
-            user = "admin",
-            password = "123"
-        )
+    private var database: Database = Database.connect(
+        "jdbc:postgresql://$host:5432/sine",
+        driver = "org.postgresql.Driver",
+        user = "admin",
+        password = "123"
+    )
+
+    fun createTables() : PostgresDatabase {
         transaction {
             create(CoordinateTable)
         }
+        return this
     }
 
-    suspend fun <T> query(block: () -> T): T =
-        withContext(Dispatchers.IO) {
-            transaction { block() }
+    suspend fun <T> queryAsync(block: () -> T): Deferred<T> =
+        suspendedTransactionAsync(Dispatchers.IO, db = database) {
+            block()
         }
 }
