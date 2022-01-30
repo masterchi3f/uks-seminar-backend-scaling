@@ -16,27 +16,27 @@ scrape_configs:
   - job_name: 'cadvisor'
     static_configs:
       - targets: ['cadvisor:8080']
-  - job_name: 'sine_wave_0'
+  - job_name: 'micrometer_0'
     static_configs:
-      - targets: ['host.docker.internal:8070']
-  - job_name: 'sine_wave_1'
+      - targets: ['192.168.1.230:8070']
+  - job_name: 'micrometer_1'
     static_configs:
-      - targets: ['host.docker.internal:8071']
-  - job_name: 'sine_wave_2'
+      - targets: ['192.168.1.230:8071']
+  - job_name: 'micrometer_2'
     static_configs:
-      - targets: ['host.docker.internal:8072']
-  - job_name: 'sine_wave_3'
+      - targets: ['192.168.1.230:8072']
+  - job_name: 'micrometer_3'
     static_configs:
-      - targets: ['host.docker.internal:8073']
-#  - job_name: 'sine_wave_4'
+      - targets: ['192.168.1.230:8073']
+#  - job_name: 'micrometer_4'
 #    static_configs:
-#      - targets: ['host.docker.internal:8074']
-#  - job_name: 'sine_wave_5'
+#      - targets: ['192.168.1.230:8074']
+#  - job_name: 'micrometer_5'
 #    static_configs:
-#      - targets: ['host.docker.internal:8075']
-#  - job_name: 'sine_wave_6'
+#      - targets: ['192.168.1.230:8075']
+#  - job_name: 'micrometer_6'
 #    static_configs:
-#      - targets: ['host.docker.internal:8076']
-#  - job_name: 'sine_wave_7'
+#      - targets: ['192.168.1.230:8076']
+#  - job_name: 'micrometer_7'
 #    static_configs:
-#      - targets: ['host.docker.internal:8077']
+#      - targets: ['192.168.1.230:8077']

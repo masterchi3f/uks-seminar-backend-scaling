@@ -3,8 +3,10 @@
 ### Prerequisites
 
 1. In [nginx.conf](./nginx/nginx.conf) change the IPs of the servers to your own IPs
-(on single node scaling ```docker.host.internal``` will also work).
-2. In [Dockerfile](Dockerfile) set the Xmx (maximum RAM) and Xms (minimum, initial RAM) values you want to use the server with.
+   (on single node scaling ```docker.host.internal``` will also work).
+2. In [prometheus-config.yml](./monitoring/prometheus-config.yml) change the IPs of the Micrometer exporter (where the server instances are running) to your own IPs
+   (on single node scaling ```docker.host.internal``` will also work).
+3. In [Dockerfile](Dockerfile) set the Xmx (maximum RAM) and Xms (minimum, initial RAM) values you want to use the server with.
 
 ### Start scaling
 
