@@ -23,8 +23,8 @@
   "fiscalYearStartMonth": 0,
   "gnetId": 5373,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1641650363256,
+  "id": 2,
+  "iteration": 1643551517025,
   "links": [],
   "liveNow": false,
   "panels": [
@@ -291,7 +291,7 @@
               "mode": "off"
             }
           },
-          "decimals": 2,
+          "decimals": 3,
           "mappings": [],
           "thresholds": {
             "mode": "absolute",
@@ -448,7 +448,7 @@
           "color": {
             "mode": "thresholds"
           },
-          "decimals": 1,
+          "decimals": 3,
           "mappings": [
             {
               "options": {
@@ -1114,7 +1114,7 @@
                 "align": "auto",
                 "displayMode": "auto"
               },
-              "decimals": 2,
+              "decimals": 3,
               "displayName": "",
               "mappings": [],
               "thresholds": {
@@ -1161,7 +1161,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "topk(9, sort_desc(sum by(route, method) (ktor_http_server_requests_seconds_count{route!=\"/metrics\"})))",
+              "expr": "topk(9, sort_desc(sum by(route, method) (ktor_http_server_requests_seconds_count{route!=\"/metrics\", status=~\"^2..$\"})))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -1241,7 +1241,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": false,
-              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{route!=\"/metrics\", status=\"^4..$\"})))",
+              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{route!=\"/metrics\", status=~\"^4..$\"})))",
               "format": "time_series",
               "hide": false,
               "instant": true,
@@ -1323,7 +1323,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": false,
-              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{route!=\"/metrics\", status=\"^5..$\"})))",
+              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{route!=\"/metrics\", status=~\"^5..$\"})))",
               "format": "time_series",
               "hide": false,
               "instant": true,
@@ -2231,7 +2231,7 @@
                 "align": "auto",
                 "displayMode": "auto"
               },
-              "decimals": 2,
+              "decimals": 3,
               "displayName": "",
               "mappings": [],
               "thresholds": {
@@ -2278,7 +2278,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": true,
-              "expr": "topk(9, sort_desc(sum by(route, method) (ktor_http_server_requests_seconds_count{instance=\"$instance\", route!=\"/metrics\"})))",
+              "expr": "topk(9, sort_desc(sum by(route, method) (ktor_http_server_requests_seconds_count{instance=\"$instance\", route!=\"/metrics\", status=~\"^2..$\"})))",
               "format": "time_series",
               "interval": "",
               "intervalFactor": 1,
@@ -2358,7 +2358,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": false,
-              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{instance=\"$instance\", route!=\"/metrics\", status=\"^4..$\"})))",
+              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{instance=\"$instance\", route!=\"/metrics\", status=~\"^4..$\"})))",
               "format": "time_series",
               "hide": false,
               "instant": true,
@@ -2440,7 +2440,7 @@
                 "uid": "PBFA97CFB590B2093"
               },
               "exemplar": false,
-              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{instance=\"$instance\", route!=\"/metrics\", status=\"^5..$\"})))",
+              "expr": "topk(10, sort_desc(sum by(route, method, status) (ktor_http_server_requests_seconds_count{instance=\"$instance\", route!=\"/metrics\", status=~\"^5..$\"})))",
               "format": "time_series",
               "hide": false,
               "instant": true,
@@ -2772,8 +2772,8 @@
       {
         "current": {
           "selected": false,
-          "text": "host.docker.internal:8070",
-          "value": "host.docker.internal:8070"
+          "text": "192.168.1.230:8070",
+          "value": "192.168.1.230:8070"
         },
         "datasource": {
           "type": "prometheus",
@@ -2802,7 +2802,7 @@
     ]
   },
   "time": {
-    "from": "now-30m",
+    "from": "now-5m",
     "to": "now"
   },
   "timepicker": {
@@ -2833,6 +2833,6 @@
   "timezone": "",
   "title": "Ktor Monitoring",
   "uid": "omBsPz1Wz",
-  "version": 3,
+  "version": 1,
   "weekStart": ""
 }
